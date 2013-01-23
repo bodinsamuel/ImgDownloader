@@ -1,0 +1,22 @@
+{
+	"name": "Img Downloader",
+
+	"version": "2",
+	"manifest_version": 2,
+	"minimum_chrome_version": "16.0.884",
+	"description": "Fast image downloader and also provide High Definition if found.",
+
+	"icons": {
+		"16": "imageinfo-16.png"
+	},
+	"background" : { "scripts": ["js/background.js"] },
+	"browser_action": {
+		"default_icon": "icon.png"
+	},
+	"web_accessible_resources": [
+	    "loading.gif", "valid.png"
+	  ],
+	"permissions": [
+		"contextMenus", "notifications", "webRequest","downloads", "tabs", "experimental", "http://*/*", "https://*/*"
+	]
+}
