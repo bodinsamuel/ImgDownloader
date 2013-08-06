@@ -86,10 +86,10 @@ function call_prepare( json ){
 }
 // Do the Actual Downloading as everything run perfectly
 function do_download( url, title ){
-	console.log( 'Lauching Download' );
+	console.log( 'Lauching Download', url, title);
 	chrome.downloads.download({
 			url: url + "?" + (new Date()).getTime(),
-			filename : title
+			filename: title
 		},
 		function( downloadId ) {
 				do_notif( url, 'Succesfully Downloaded', title );
@@ -125,9 +125,9 @@ function fastDownload( ){
   return function(info, tab) {
 	pre_notif();
 	var url = info['srcUrl'];
-	var re = /([\w\d_-]*)\.?[^\\\/]*$/i;
-	var filename = url.match(re)[1];
-	do_download( url, filename );
+	var file = url.split(/\?/)[0];
+	var filename = file.split(/\//);
+	do_download( url, filename[filename.length -1] );
   };
 }
 
